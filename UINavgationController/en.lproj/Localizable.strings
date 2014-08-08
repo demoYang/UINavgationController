@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings//这是系统的默认名字
+  UINavgationController
+
+  Created by 张鑫 on 14-7-13.
+  Copyright (c) 2014年 niexin. All rights reserved.
+*/
+
+"key" = "english value";

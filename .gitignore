@@ -6,3 +6,5 @@
 #
 # Pods/
 
+.gitignore
+.DS_Store
