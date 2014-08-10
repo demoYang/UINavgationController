@@ -76,6 +76,12 @@
     LOGINFO(@"%@",@"this is ios 4.0");
 #endif
     
+#if TARGET_IPHONE_SIMULATOR
+    NSLog(@"run on simulator");
+#else
+    NSLog(@"run on device");
+#endif
+    
     scrollView = [[UIScrollView alloc]initWithFrame:self.view.frame];
     
     

@@ -23,12 +23,15 @@ void printLog(int level ,NSString* file ,int line ,NSString* format, ...){
     va_end(ap);
     /*
      id sender;
+     va_list ap;
+     va_start(ap, format);
      while ((sender = va_arg(ap, id))) {
         if ([sender isKindOfClass:[NSString class]]) {
      
         }
      }
     */
+    
     NSString* levelStr = @"INFO";
     if (level == LEVEL_WARN) {
         levelStr = @"WARN";
