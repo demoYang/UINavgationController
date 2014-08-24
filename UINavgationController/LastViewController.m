@@ -41,6 +41,10 @@
     NSString * temp = [dateFormatter stringFromDate:[NSDate date]];
     int     tempPos = [temp intValue] - 1;
     
+    
+    
+    
+    
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
