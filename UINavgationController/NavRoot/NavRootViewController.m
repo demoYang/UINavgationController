@@ -58,6 +58,8 @@
     UIBarButtonItem* item2 = [[UIBarButtonItem alloc]initWithTitle:@"next"style:UIBarButtonItemStyleBordered target:self action:@selector(nextStep:)];
     self.navigationItem.rightBarButtonItem = item2;
 
+    LOGINFO(NSLocalizedString(@"key", @""));
+    
 //    view 定义xib文件的方法
 //        NSArray* array = [[NSBundle mainBundle]loadNibNamed:@"ItemView" owner:nil options:nil];
 //        ItemView* tempView = [array objectAtIndex:0];
