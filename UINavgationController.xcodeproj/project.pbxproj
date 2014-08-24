@@ -30,6 +30,8 @@
 		250D591A197528F1006AA2F7 /* Skintone.m in Sources */ = {isa = PBXBuildFile; fileRef = 250D5917197528F1006AA2F7 /* Skintone.m */; };
 		25154181196FC2F400A456F3 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 25154180196FC2F400A456F3 /* Reachability.m */; };
 		25154183196FC43400A456F3 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 25154182196FC43400A456F3 /* SystemConfiguration.framework */; };
+		5B28324019AA06E700C873FB /* UIImage+Effects.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B28323F19AA06E700C873FB /* UIImage+Effects.m */; };
+		5B28324219AA0B2400C873FB /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B28324119AA0B2400C873FB /* Accelerate.framework */; };
 		5B84681C1955ACA80033C079 /* NSString-expand.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B84681B1955ACA80033C079 /* NSString-expand.m */; };
 		5B84682B195691860033C079 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B84682A195691860033C079 /* CoreData.framework */; };
 		5B84684D1956BEAA0033C079 /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5B8468451956BEAA0033C079 /* CoreData.xcdatamodeld */; };
@@ -155,6 +157,9 @@
 		2515417F196FC2F400A456F3 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		25154180196FC2F400A456F3 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
 		25154182196FC43400A456F3 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		5B28323E19AA06E700C873FB /* UIImage+Effects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Effects.h"; path = "UIImage/UIImage+Effects.h"; sourceTree = "<group>"; };
+		5B28323F19AA06E700C873FB /* UIImage+Effects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Effects.m"; path = "UIImage/UIImage+Effects.m"; sourceTree = "<group>"; };
+		5B28324119AA0B2400C873FB /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		5B84681A1955ACA80033C079 /* NSString-expand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString-expand.h"; sourceTree = "<group>"; };
 		5B84681B1955ACA80033C079 /* NSString-expand.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString-expand.m"; sourceTree = "<group>"; };
 		5B84682A195691860033C079 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -281,6 +286,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B28324219AA0B2400C873FB /* Accelerate.framework in Frameworks */,
 				25154183196FC43400A456F3 /* SystemConfiguration.framework in Frameworks */,
 				5B84682B195691860033C079 /* CoreData.framework in Frameworks */,
 				5BC077A3194DAA590024627F /* Security.framework in Frameworks */,
@@ -325,6 +331,7 @@
 		0D7186F71600BE530062A13F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5B28324119AA0B2400C873FB /* Accelerate.framework */,
 				25154182196FC43400A456F3 /* SystemConfiguration.framework */,
 				5B84682A195691860033C079 /* CoreData.framework */,
 				5BC077A2194DAA590024627F /* Security.framework */,
@@ -409,6 +416,15 @@
 			);
 			name = Reachability;
 			path = Common/Reachability;
+			sourceTree = "<group>";
+		};
+		5B28323D19AA069500C873FB /* UIimage */ = {
+			isa = PBXGroup;
+			children = (
+				5B28323E19AA06E700C873FB /* UIImage+Effects.h */,
+				5B28323F19AA06E700C873FB /* UIImage+Effects.m */,
+			);
+			name = UIimage;
 			sourceTree = "<group>";
 		};
 		5B8468191955ACA80033C079 /* NSString */ = {
@@ -606,6 +622,7 @@
 		5BD46DA1194D418E002995EB /* systemExpand */ = {
 			isa = PBXGroup;
 			children = (
+				5B28323D19AA069500C873FB /* UIimage */,
 				5BC4EC041972C20200ECAB1E /* NSData */,
 				5B8468191955ACA80033C079 /* NSString */,
 				5BC077A4194DBB390024627F /* KeyChain */,
@@ -839,6 +856,7 @@
 				5B84681C1955ACA80033C079 /* NSString-expand.m in Sources */,
 				5BD46DBC194D418E002995EB /* ShareTofaceBookViewController.m in Sources */,
 				5BD46DD2194D418E002995EB /* DrawRectViewController.m in Sources */,
+				5B28324019AA06E700C873FB /* UIImage+Effects.m in Sources */,
 				5B8468531956BF080033C079 /* CoreDataViewController.m in Sources */,
 				5BD46DD4194D418E002995EB /* test.m in Sources */,
 				5B84684F1956BEAA0033C079 /* Product.m in Sources */,
