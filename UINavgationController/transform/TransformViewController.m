@@ -116,44 +116,44 @@
         case 0:{
             [CATransaction begin];
             [CATransaction setAnimationDuration:10.0f];
-            
-            
-            
+            /*  两种状态 ，开始和结束状态  */
             [CATransaction commit];
         }
             break;
         case 1:{
+            [UIView animateWithDuration:3 animations:^{
+               //两种状态 ，开始和结束状态
+            }];
+        }
+            break;
+        case 2:{
+            [UIView beginAnimations:nil context:nil];
+            [UIView setAnimationDuration:12];
+            [UIView setAnimationCurve:UIViewAnimationCurveLinear];
+            [UIView setAnimationDelegate:self];
+            [UIView setAnimationDidStopSelector:@selector(stopAnimation)];
+            //两种状态 ，开始和结束状态
+            [UIView commitAnimations];
+        }
+            break;
+        case 3:{
             CATransition *animation = [CATransition animation];
             [animation setDelegate:self];
-            // 设定动画类型
-            // kCATransitionFade 淡化
-            // kCATransitionPush 推挤
-            // kCATransitionReveal 揭开
-            // kCATransitionMoveIn 覆盖
-            // @"cube" 立方体
-            // @"suckEffect" 吸收 
-            // @"oglFlip" 翻转
-            // @"rippleEffect" 波纹
-            // @"pageCurl" 翻页
-            // @"pageUnCurl" 反翻页
-            // @"cameraIrisHollowOpen" 镜头开
-            // @"cameraIrisHollowClose" 镜头关
-            /* 过渡效果
-             fade     //交叉淡化过渡(不支持过渡方向)
-             push     //新视图把旧视图推出去
-             moveIn   //新视图移到旧视图上面
-             reveal   //将旧视图移开,显示下面的新视图
-             cube     //立方体翻滚效果
-             oglFlip  //上下左右翻转效果
-             suckEffect   //收缩效果，如一块布被抽走(不支持过渡方向)
-             rippleEffect //滴水效果(不支持过渡方向)
-             pageCurl     //向上翻页效果
-             pageUnCurl   //向下翻页效果
-             cameraIrisHollowOpen  //相机镜头打开效果(不支持过渡方向)
-             cameraIrisHollowClose //相机镜头关上效果(不支持过渡方向)
-             */
-            
-            /* 过渡方向
+            /* 设定动画类型
+             kCATransitionFade 淡化
+             kCATransitionPush 推挤
+             kCATransitionReveal 揭开
+             kCATransitionMoveIn 覆盖
+             @"cube" 立方体
+             @"suckEffect" 吸收
+             @"oglFlip" 翻转
+             @"rippleEffect" 波纹
+             @"pageCurl" 翻页
+             @"pageUnCurl" 反翻页
+             @"cameraIrisHollowOpen" 镜头开
+             @"cameraIrisHollowClose" 镜头关
+             
+             过渡方向
              fromRight;
              fromLeft;
              fromTop;
@@ -166,7 +166,7 @@
             [self.label1.layer addAnimation:animation forKey:@"MTTransaction"];
         }
             break;
-        case 2:{
+        case 4:{
             [CATransaction setValue:[NSNumber numberWithFloat:1.0] forKey:kCATransactionAnimationDuration];
             CABasicAnimation *FlipAnimation=[CABasicAnimation animationWithKeyPath:@"transform.rotation.y"];
             FlipAnimation.timingFunction= [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
@@ -178,26 +178,147 @@
             [CATransaction commit];
         }
             break;
-        case 3:{
-            [UIView animateWithDuration:3 animations:^{
-               //两种状态 ，开始和结束状态
-            }];
-        }
-            break;
-        case 4:{
-            [UIView beginAnimations:nil context:nil];
-            [UIView setAnimationDuration:12];
-            [UIView setAnimationCurve:UIViewAnimationCurveLinear];
-            [UIView setAnimationDelegate:self];
-            [UIView setAnimationDidStopSelector:@selector(stopAnimation)];
-            //两种状态 ，开始和结束状态
-            [UIView commitAnimations];
-        }
-            break;
         default:
             break;
     }
 }
+/*
+ animationWithKeyPath的值：
+ 
+ 
+ 
+ transform.scale = 比例轉換
+ transform.scale.x = 闊的比例轉換
+ transform.scale.y = 高的比例轉換
+ transform.rotation.z = 平面圖的旋轉
+ opacity = 透明度
+ 
+ margin
+ 
+ zPosition
+ 
+ backgroundColor
+ 
+ cornerRadius
+ 
+ borderWidth
+ 
+ bounds
+ 
+ contents
+ 
+ contentsRect
+ 
+ cornerRadius
+ 
+ frame
+ 
+ hidden
+ 
+ mask
+ 
+ masksToBounds
+ 
+ opacity
+ 
+ position
+ 
+ shadowColor
+ 
+ shadowOffset
+ 
+ shadowOpacity
+ 
+ shadowRadius
+ */
+#pragma mark === 永久闪烁的动画 ======
+-(CABasicAnimation *)opacityForever_Animation:(float)time
+{
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];//必须写opacity才行。
+    animation.fromValue = [NSNumber numberWithFloat:1.0f];
+    animation.toValue = [NSNumber numberWithFloat:0.0f];//这是透明度。
+    animation.autoreverses = YES;
+    animation.duration = time;
+    animation.repeatCount = MAXFLOAT;
+    animation.removedOnCompletion = NO;
+    animation.fillMode = kCAFillModeForwards;
+    animation.timingFunction=[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];///没有的话是均匀的动画。
+    return animation;
+}
+
+#pragma mark =====横向、纵向移动===========
+-(CABasicAnimation *)moveX:(float)time X:(NSNumber *)x
+{
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.translation.x"];///.y的话就向下移动。
+    animation.toValue = x;
+    animation.duration = time;
+    animation.removedOnCompletion = NO;//yes的话，又返回原位置了。
+    animation.repeatCount = MAXFLOAT;
+    animation.fillMode = kCAFillModeForwards;
+    return animation;
+}
+
+#pragma mark =====缩放-=============
+-(CABasicAnimation *)scale:(NSNumber *)Multiple orgin:(NSNumber *)orginMultiple durTimes:(float)time Rep:(float)repertTimes
+{
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    animation.fromValue = Multiple;
+    animation.toValue = orginMultiple;
+    animation.autoreverses = YES;
+    animation.repeatCount = repertTimes;
+    animation.duration = time;//不设置时候的话，有一个默认的缩放时间.
+    animation.removedOnCompletion = NO;
+    animation.fillMode = kCAFillModeForwards;
+    return  animation;
+}
+
+#pragma mark =====组合动画-=============
+-(CAAnimationGroup *)groupAnimation:(NSArray *)animationAry durTimes:(float)time Rep:(float)repeatTimes
+{
+    CAAnimationGroup *animation = [CAAnimationGroup animation];
+    animation.animations = animationAry;
+    animation.duration = time;
+    animation.removedOnCompletion = NO;
+    animation.repeatCount = repeatTimes;
+    animation.fillMode = kCAFillModeForwards;
+    return animation;
+}
+
+#pragma mark =====路径动画-=============
+-(CAKeyframeAnimation *)keyframeAnimation:(CGMutablePathRef)path durTimes:(float)time Rep:(float)repeatTimes
+{
+    CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+    animation.path = path;
+    animation.removedOnCompletion = NO;
+    animation.fillMode = kCAFillModeForwards;
+    animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+    animation.autoreverses = NO;
+    animation.duration = time;
+    animation.repeatCount = repeatTimes;
+    return animation;
+}
+
+#pragma mark ====旋转动画======
+-(CABasicAnimation *)rotation:(float)dur degree:(float)degree direction:(int)direction repeatCount:(int)repeatCount
+{
+    CATransform3D rotationTransform = CATransform3DMakeRotation(degree, 0, 0, direction);
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform"];
+    animation.toValue = [NSValue valueWithCATransform3D:rotationTransform];
+    animation.duration  =  dur;
+    animation.autoreverses = NO;
+    animation.cumulative = NO;
+    animation.fillMode = kCAFillModeForwards;
+    animation.repeatCount = repeatCount;
+    animation.delegate = self;
+    
+    return animation;
+    
+}
+
+
+
+
+
 
 - (void)didReceiveMemoryWarning
 {

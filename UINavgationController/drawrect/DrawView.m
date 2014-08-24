@@ -55,6 +55,10 @@
             //点与点之间用圆弧
             CGContextAddArcToPoint(context, 10, 10, 10, 20, 10);
             
+            
+            CGContextMoveToPoint(context, 10, 210);
+            CGContextAddCurveToPoint(context, 110, 110, 210, 210, 320, 210);
+            
             //把起点和中点连起来
             CGContextClosePath(context);
             //把图显示出来
@@ -132,7 +136,7 @@
             
             break;
         }
-        case 4:{//画图
+        case 4:{//帧动画
             //Prepare the animation - we use keyframe animation for animations of this complexity
             //需要quartzcore。framework
             CAKeyframeAnimation *pathAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
