@@ -120,6 +120,8 @@
 		5BD46DED194D445B002995EB /* NavRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD46DE9194D445B002995EB /* NavRootViewController.m */; };
 		5BD46DEE194D445B002995EB /* NavRootViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5BD46DEA194D445B002995EB /* NavRootViewController.xib */; };
 		5BD46DF2194D49BE002995EB /* PrintLog.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD46DF1194D49BE002995EB /* PrintLog.m */; };
+		5BDB06A719C724A80099FBA8 /* SocketViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDB06A619C724A80099FBA8 /* SocketViewController.m */; };
+		5BDB06A919C724F80099FBA8 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BDB06A819C724F80099FBA8 /* CFNetwork.framework */; };
 		E561D7AB18DC41D000411BF0 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E561D7AA18DC41D000411BF0 /* CoreText.framework */; };
 /* End PBXBuildFile section */
 
@@ -278,6 +280,9 @@
 		5BD46DF0194D49BE002995EB /* PrintLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrintLog.h; sourceTree = "<group>"; };
 		5BD46DF1194D49BE002995EB /* PrintLog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrintLog.m; sourceTree = "<group>"; };
 		5BD46DF4194D4D78002995EB /* Define.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Define.h; path = Common/Define.h; sourceTree = "<group>"; };
+		5BDB06A519C724A80099FBA8 /* SocketViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SocketViewController.h; path = socket/SocketViewController.h; sourceTree = "<group>"; };
+		5BDB06A619C724A80099FBA8 /* SocketViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SocketViewController.m; path = socket/SocketViewController.m; sourceTree = "<group>"; };
+		5BDB06A819C724F80099FBA8 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		E561D7AA18DC41D000411BF0 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -286,6 +291,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BDB06A919C724F80099FBA8 /* CFNetwork.framework in Frameworks */,
 				5B28324219AA0B2400C873FB /* Accelerate.framework in Frameworks */,
 				25154183196FC43400A456F3 /* SystemConfiguration.framework in Frameworks */,
 				5B84682B195691860033C079 /* CoreData.framework in Frameworks */,
@@ -331,6 +337,7 @@
 		0D7186F71600BE530062A13F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5BDB06A819C724F80099FBA8 /* CFNetwork.framework */,
 				5B28324119AA0B2400C873FB /* Accelerate.framework */,
 				25154182196FC43400A456F3 /* SystemConfiguration.framework */,
 				5B84682A195691860033C079 /* CoreData.framework */,
@@ -376,6 +383,7 @@
 				5BD46D63194D418D002995EB /* 发送邮件和短信 */,
 				5BD46D67194D418D002995EB /* 分享到facebook */,
 				5BC4EBFF1971095500ECAB1E /* request */,
+				5BDB06A419C7246F0099FBA8 /* socket */,
 				5BD46DAC194D418E002995EB /* UIScrollView代码实现无缝循环滚动 */,
 				0DC5F359163AC67900F7D8D5 /* LastViewController.h */,
 				0DC5F35A163AC67900F7D8D5 /* LastViewController.m */,
@@ -710,6 +718,15 @@
 			name = Common;
 			sourceTree = "<group>";
 		};
+		5BDB06A419C7246F0099FBA8 /* socket */ = {
+			isa = PBXGroup;
+			children = (
+				5BDB06A519C724A80099FBA8 /* SocketViewController.h */,
+				5BDB06A619C724A80099FBA8 /* SocketViewController.m */,
+			);
+			name = socket;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -852,6 +869,7 @@
 				5B8468561956C1A30033C079 /* SQLiteTool.m in Sources */,
 				0D7187091600BE530062A13F /* AppDelegate.m in Sources */,
 				250D591A197528F1006AA2F7 /* Skintone.m in Sources */,
+				5BDB06A719C724A80099FBA8 /* SocketViewController.m in Sources */,
 				5BD46DC3194D418E002995EB /* RegexAndMd5ViewController.m in Sources */,
 				5B84681C1955ACA80033C079 /* NSString-expand.m in Sources */,
 				5BD46DBC194D418E002995EB /* ShareTofaceBookViewController.m in Sources */,
